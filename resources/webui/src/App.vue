@@ -10,12 +10,12 @@ const authStore = useAuthStore();
     <nav>
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/about">About</RouterLink>
-      <RouterLink to="/create">Create</RouterLink>
       <template v-if="!authStore.authUser">
         <RouterLink to="/login">Login</RouterLink>
         <RouterLink to="/register">Register</RouterLink>
       </template>
       <template v-else>
+        <RouterLink to="/create">Create</RouterLink>
         <button @click="authStore.logout()">Logout</button>
       </template>
     </nav>
