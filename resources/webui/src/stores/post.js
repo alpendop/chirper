@@ -28,5 +28,11 @@ export const usePostStore = defineStore('post', () => {
         postError.value = error.response.data.errors;
       });
   };
+
+  const deletePost = async (id) => {
+    await api.post(`/api/chirps/delete/${id}`);
+    await getPosts();
+  };
+
   return { posts, postError, form, createPost, deletePost, getPosts };
 });

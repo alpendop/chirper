@@ -1,4 +1,5 @@
 <script setup>
+import { useAuthStore } from '../stores/auth.js';
 import { usePostStore } from '../stores/post.js';
 
 defineProps({
@@ -6,6 +7,7 @@ defineProps({
 });
 
 const postStore = usePostStore();
+const authStore = useAuthStore();
 </script>
 
 <template>
@@ -13,6 +15,9 @@ const postStore = usePostStore();
     <li>
       <p>{{ posts.name }}</p>
       <p>{{ posts.post }}</p>
+      <div v-if="authStore.authUser.id == posts.user_id">
+        <button @click="postStore.deletePost(posts.id)">X</button>
+      </div>
     </li>
   </ul>
 </template>
