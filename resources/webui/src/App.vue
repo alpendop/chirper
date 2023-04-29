@@ -15,7 +15,6 @@ const authStore = useAuthStore();
         <RouterLink to="/register">Register</RouterLink>
       </template>
       <template v-else>
-        <RouterLink to="/create">Create</RouterLink>
         <button @click="authStore.logout()">Logout</button>
       </template>
     </nav>

@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import AboutView from '../views/AboutView.vue';
-import CreatePostView from '../views/CreatePostView.vue';
 import LoginView from '../views/LoginView.vue';
 import RegisterView from '../views/RegisterView.vue';
 
@@ -27,7 +26,7 @@ const router = createRouter({
       path: '/register',
       name: 'register',
       component: RegisterView
-    },
+    }
   ]
 });
 
