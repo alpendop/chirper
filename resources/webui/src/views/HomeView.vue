@@ -2,6 +2,7 @@
 import { watchEffect } from 'vue';
 import PostCard from '../components/PostCard.vue';
 import { usePostStore } from '../stores/post.js';
+import CreatePost from '../components/CreatePost.vue';
 
 const postStore = usePostStore();
 
@@ -11,6 +12,7 @@ watchEffect(async () => {
 </script>
 
 <template>
+  <CreatePost />
   <PostCard v-for="posts in postStore.posts" :posts="posts" :key="posts.id" />
 </template>
 

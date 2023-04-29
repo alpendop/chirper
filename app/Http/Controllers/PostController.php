@@ -17,4 +17,19 @@ class PostController extends Controller
             ->select('posts.*', 'users.name')
             ->get();
     }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'post' => 'required|string|max:125'
+        ]);
+
+        Post::create([
+            'post' => $request->post,
+            'user_id' => $request->user()->id
+        ]);
+    }
 }
