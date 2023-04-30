@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted } from 'vue';
 import { usePostStore } from '../stores/post.js';
+import CommentCard from '../components/CommentCard.vue';
 
 const props = defineProps({
   id: String
@@ -17,6 +18,7 @@ onMounted(async () => {
   <router-link to="/"><p class="back">Back</p></router-link>
   <p>{{ postStore.posts[0].name }}</p>
   <p>{{ postStore.posts[0].post }}</p>
+  <CommentCard :postId="props.id" />
 </template>
 
 <style scoped>
