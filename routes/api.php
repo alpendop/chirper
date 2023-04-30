@@ -21,7 +21,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 Route::prefix('chirps')->group(function () {
     Route::post('/create', [PostController::class, 'store'])->name('chirps.store');
-    Route::post('/delete/{id}', [PostController::class, 'destroy'])->name('chirps.destroy');
+    Route::delete('/delete/{id}', [PostController::class, 'destroy'])->name('chirps.destroy');
 })->middleware('auth:sanctum');
 
 Route::get('/chirps', [PostController::class, 'index'])->name('chirps.index');

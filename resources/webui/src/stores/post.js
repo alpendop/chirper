@@ -36,7 +36,7 @@ export const usePostStore = defineStore('post', () => {
   };
 
   const deletePost = async (id) => {
-    await api.post(`/api/chirps/delete/${id}`);
+    await api.delete(`/api/chirps/delete/${id}`);
     await getPosts();
   };
 
