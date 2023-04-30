@@ -34,4 +34,12 @@ class CommentController extends Controller
             ->where('comments.post_id', $id)
             ->get();
     }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        return Comment::where('id', $id)->delete();
+    }
 }
