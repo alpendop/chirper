@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,10 @@ Route::prefix('chirps')->group(function () {
 
 Route::get('/chirps', [PostController::class, 'index'])->name('chirps.index');
 Route::get('/chirps/{id}', [PostController::class, 'show'])->name('chirps.show');
+
+Route::prefix('comments')->group(function () {
+    Route::post('/create', [CommentController::class, 'store'])->name('comments.store');
+    Route::delete('delete/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
+});
+
+Route::get('comments/{id}', [CommentController::class, 'show'])->name('comments.index');
