@@ -25,3 +25,4 @@ Route::prefix('chirps')->group(function () {
 })->middleware('auth:sanctum');
 
 Route::get('/chirps', [PostController::class, 'index'])->name('chirps.index');
+Route::get('/chirps/{id}', [PostController::class, 'show'])->name('chirps.show');

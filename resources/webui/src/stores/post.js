@@ -15,6 +15,12 @@ export const usePostStore = defineStore('post', () => {
     });
   };
 
+  const getPost = async (id) => {
+    await api.get(`/api/chirps/${id}`).then((response) => {
+      posts.value = response.data;
+    });
+  };
+
   const createPost = async (form) => {
     await api
       .post('/api/chirps/create', {
@@ -34,5 +40,5 @@ export const usePostStore = defineStore('post', () => {
     await getPosts();
   };
 
-  return { posts, postError, form, createPost, deletePost, getPosts };
+  return { posts, postError, form, createPost, deletePost, getPosts, getPost };
 });

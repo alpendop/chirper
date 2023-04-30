@@ -34,6 +34,15 @@ class PostController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        return User::join('posts', 'users.id', '=', 'posts.user_id')
+            ->select('posts.*', 'users.name')
+            ->where('posts.id', $id)
+            ->get();
+    }
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)

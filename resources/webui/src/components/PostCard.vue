@@ -18,6 +18,7 @@ const authStore = useAuthStore();
       <div v-if="authStore.authUser">
         <button @click="postStore.deletePost(posts.id)" v-show="authStore.authUser.id == posts.user_id">X</button>
       </div>
+      <router-link :to="{ name: 'post', params: { id: posts.id } }">See comments</router-link>
     </li>
   </ul>
 </template>
