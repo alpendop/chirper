@@ -9,6 +9,22 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
     /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'comment' => 'required|string|max:255'
+        ]);
+
+        Comment::create([
+            'comment' => $request->comment,
+            'post_id' => $request->post_id,
+            'user_id' => $request->user()->id,
+        ]);
+    }
+
+    /**
      * Display the specified resource.
      */
     public function show(string $id)
