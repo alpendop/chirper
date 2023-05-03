@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -29,7 +28,7 @@ class CommentController extends Controller
      */
     public function show(string $id)
     {
-        return User::join('comments', 'users.id', '=', 'comments.user_id')
+        return Comment::join('users', 'users.id', '=', 'comments.user_id')
             ->select('comments.*', 'users.name')
             ->where('comments.post_id', $id)
             ->get();

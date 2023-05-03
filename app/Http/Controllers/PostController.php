@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -13,7 +12,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return User::join('posts', 'users.id', '=', 'posts.user_id')
+        return Post::join('users', 'users.id', '=', 'posts.user_id')
             ->select('posts.*', 'users.name')
             ->get();
     }
@@ -38,10 +37,10 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        return User::join('posts', 'users.id', '=', 'posts.user_id')
-            ->select('posts.*', 'users.name')
-            ->where('posts.id', $id)
-            ->get();
+        return Post::join('users', 'users.id', '=', 'posts.user_id')
+        ->select('posts.*', 'users.name')
+        ->where('posts.id', $id)
+        ->get();
     }
 
     public function destroy(string $id)
