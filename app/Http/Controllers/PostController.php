@@ -14,6 +14,7 @@ class PostController extends Controller
     {
         return Post::join('users', 'users.id', '=', 'posts.user_id')
             ->select('posts.*', 'users.name')
+            ->orderBy('created_at', 'desc')
             ->get();
     }
 
